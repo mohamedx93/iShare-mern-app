@@ -1,26 +1,35 @@
 import React, {useEffect, useState} from 'react'
 import Post from './Post/Post'
 import { useSelector } from 'react-redux';
-import { Grid, CircularProgress } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
+import CircularProgressWithLabel from './CircularProgressWithLabel'
 import useStyles from './styles';
-export default function Posts() {
+
+
+export default function Posts({setCurrentId}) {
+
     const posts = useSelector((state) => state.posts);
+    const loadingValue = useSelector((state) => state.loadingValue);
     const classes = useStyles();
     const [loading, setLoading] = useState(true)
+    // const [loadingValue, setLoadingValue] = useState(0)
     
     useEffect(()=>{
         setLoading(posts.length === 0);
-    console.log(posts.length)
+        console.log(`there are ${posts.length} posts in DB`)
+        console.log(`loadingState ${loadingValue}`)
     }
-        
-        , [posts])
+        , [posts, loadingValue])
+    
+    
+    
     return (
-        loading ? <CircularProgress /> : (
+        loading ? <CircularProgressWithLabel value={loadingValue}/> : (
             <Grid className={classes.container} container alignItems='stretch' spacing={3}>
                 {
                     posts.map(post => (
                         <Grid key={post._id} item xs={12} sm={6}>
-                            <Post post={post}/>
+                            <Post post={post} setCurrentId={setCurrentId}/>
                         </Grid>
                     ))
                 }

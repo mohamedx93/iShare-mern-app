@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
     root: {
@@ -6,7 +6,7 @@ export default makeStyles((theme) => ({
             margin: theme.spacing(1),
         },
     },
-    papper: {
+    paper: {
         padding: theme.spacing(2),
     },
     form: {
@@ -16,9 +16,9 @@ export default makeStyles((theme) => ({
     },
     fileInput: {
         width: '97%',
-        margin: '10px 0'
+        margin: '10px 0',
     },
     buttonSubmit: {
         marginBottom: 10,
     },
-}))
+}));
