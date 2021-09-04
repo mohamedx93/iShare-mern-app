@@ -14,8 +14,9 @@ export default function App() {
     const dispatch = useDispatch();
     const [currentId, setCurrentId] = useState(null);
     useEffect(() => {
+        console.log("currentId: ",currentId)
         dispatch(getPosts());
-    }, [dispatch])
+    }, [dispatch, currentId])
 
     return (
         <Container>
@@ -24,8 +25,8 @@ export default function App() {
                 <img className={classes.image} src={memories} alt="memories" height='60' />
             </AppBar>
             <Grow in>
-                <Container>
-                    <Grid container justifyContent="space-between" alignItems="stretch">
+                <Container >
+                    <Grid className={classes.mainContainer} container spacing={3} justifyContent="space-between" alignItems="stretch">
                         <Grid item xs={12} md={5} lg={6}>
                             <Posts setCurrentId={setCurrentId}></Posts>
                         </Grid>
