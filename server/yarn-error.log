@@ -1,5 +1,9 @@
 Arguments: 
+<<<<<<< HEAD
   /home/mox/.nvm/versions/node/v14.15.3/bin/node /home/mox/.nvm/versions/node/v14.15.3/bin/yarn add decryptjs jsonwebtoken
+=======
+  /home/mox/.nvm/versions/node/v14.15.3/bin/node /home/mox/.nvm/versions/node/v14.15.3/bin/yarn add .env
+>>>>>>> Accountless
 
 PATH: 
   /usr/lib/jvm/jdk-15.0.1/bin:/home/mox/.nvm/versions/node/v14.15.3/bin:/home/mox/bin:/usr/local/bin:/usr/lib/jvm/jdk-15.0.1/bin:/home/mox/.nvm/versions/node/v14.15.3/bin:/home/mox/bin:/usr/local/bin:/usr/lib/jvm/jdk-15.0.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/mox/ssd/Android/Sdk/emulator:/home/mox/ssd/Android/Sdk/tools:/home/mox/ssd/Android/Sdk/tools/bin:/home/mox/ssd/Android/Sdk/platform-tools:/home/mox/ssd/Android/Sdk/emulator:/home/mox/ssd/Android/Sdk/tools:/home/mox/ssd/Android/Sdk/tools/bin:/home/mox/ssd/Android/Sdk/platform-tools:/home/mox/.yarn/bin:/home/mox/ssd/Android/Sdk/emulator:/home/mox/ssd/Android/Sdk/tools:/home/mox/ssd/Android/Sdk/tools/bin:/home/mox/ssd/Android/Sdk/platform-tools:/home/mox/.yarn/bin
@@ -14,7 +18,11 @@ Platform:
   linux x64
 
 Trace: 
+<<<<<<< HEAD
   Error: https://registry.yarnpkg.com/decryptjs: Not found
+=======
+  Error: https://registry.yarnpkg.com/.env: Not found
+>>>>>>> Accountless
       at Request.params.callback [as _callback] (/home/mox/.nvm/versions/node/v14.15.3/lib/node_modules/yarn/lib/cli.js:66988:18)
       at Request.self.callback (/home/mox/.nvm/versions/node/v14.15.3/lib/node_modules/yarn/lib/cli.js:140662:22)
       at Request.emit (events.js:315:20)
