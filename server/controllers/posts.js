@@ -1,13 +1,6 @@
-<<<<<<< HEAD
-
-
-import PostMessage from '../models/postMessage.js'
-import mongoose from 'mongoose'
-=======
 import mongoose from 'mongoose'
 import PostMessage from '../models/postMessage.js'
 
->>>>>>> Accountless
 
 export const getPosts = async (req, res) => {
     try {
