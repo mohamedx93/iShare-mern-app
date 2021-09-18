@@ -3,28 +3,35 @@ import axios from 'axios';
 
 import { store } from '../index'
 import { updateLoadingValue } from '../actions/loading-value'
-// const writer = createWriteStream('./posts.json');
 
-const url = 'http://localhost:5000/posts';
+const API = axios.create({ baseURL: 'http://localhost:5000' });
 
+API.interceptors.request.use ((req) => {
+    if (localStorage.getItem('profile')) {
+        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
+    }
 
+    
+    return req;
+}, (error) => (Promise.reject(error)));
 
-export const fetchPosts = () => axios.get(url,
+export const fetchPosts = () => API.get('/posts',
     {
         onDownloadProgress:  (progressEvent) => {
             let loadingValue =  Math.floor(progressEvent.loaded / progressEvent.total * 100);
             store.dispatch(updateLoadingValue(loadingValue));
         }
     });
-export const createPost = (newPost) => axios.post(url, newPost);
+export const createPost = (newPost) => API.post('/posts', newPost);
 
-export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
+export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updatedPost);
 
-export const deletePost = (id) => axios.delete(`${url}/${id}`);
+export const deletePost = (id) => API.delete(`/posts/${id}`);
 
-export const likePost = (id,likes) => axios.patch(`${url}/${id}/${likes}/likePost`);
+export const likePost = (id, likes) => API.patch(`/posts/${id}/likePost`);
 
-
+export const signIn = (formData) => API.post('/user/signin', formData);
+export const signUp = (formData) => API.post('/user/signup', formData);
 
 // const method = 'GET';
 

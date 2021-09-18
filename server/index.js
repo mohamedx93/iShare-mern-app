@@ -2,7 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import postRoutes from './routes/posts.js'
+import postRoutes from './routes/postsRoutes.js'
+import userRoutes from './routes/usersRoutes.js'
 
 const app = express();
 dotenv.config();
@@ -10,6 +11,7 @@ app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use('/posts', postRoutes);
+app.use('/user', userRoutes);
 
 
 const CONNECTION_URL = `mongodb://${encodeURIComponent(process.env.DB_USER)}:${encodeURIComponent(process.env.DB_PWD)}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`;

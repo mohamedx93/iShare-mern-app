@@ -5,7 +5,6 @@ import { Grid } from '@material-ui/core';
 import CircularProgressWithLabel from './CircularProgressWithLabel'
 import useStyles from './styles';
 
-
 export default function Posts({ setCurrentId }) {
 
     const posts = useSelector((state) => state.posts);
@@ -13,8 +12,8 @@ export default function Posts({ setCurrentId }) {
     const classes = useStyles();
     const [loading, setLoading] = useState(true)
     // const [loadingValue, setLoadingValue] = useState(0)
-
-    useEffect(() => {setLoading(loadingValue<100)}, [loadingValue])
+    
+    useEffect(() => { setLoading(loadingValue < 100) }, [loadingValue])
 
 
 

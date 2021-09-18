@@ -49,4 +49,8 @@ export default makeStyles({
         display: 'flex',
         justifyContent: 'space-between',
     },
+    likesComponent: {
+        textTransform: 'initial',
+        fontSize: '0.75rem',  
+    },
 });

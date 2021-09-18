@@ -10,7 +10,7 @@ export const getPosts = () => async (dispatch) => {
             { type: actionTypes.FETCH_ALL, payload: data }
         );
     } catch (error) {
-        console.log(error.message);
+        console.log('post action:', error.message);
     }
 
 }
@@ -34,26 +34,21 @@ export const updatePost = (id, post) => async (dispatch) => {
     }
 }
 
+export const likePost = (id, likes) => async dispatch => {
+
+    try {
+        const { data } = await api.likePost(id, likes);
+        dispatch({ type: actionTypes.LIKE, payload: data });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const deletePost = (id) => async (dispatch) => {
     try {
         await api.deletePost(id);
         dispatch({ type: actionTypes.DELETE, payload: id });
     } catch (error) {
         console.log(error)
-    }
-}
-
-export const likePostFrontEnd = (id) => {
-    return { type: actionTypes.LIKE_FRONTEND, payload: id }
-}
-
-
-export const likePostBackEnd = (id, likes) => async dispatch => {
-
-    try {
-        const { data } = await api.likePost(id, likes);
-        dispatch({ type: actionTypes.LIKE, payload: { data } });
-    } catch (error) {
-        console.log(error);
     }
 }
