@@ -12,7 +12,7 @@ export default function Form({ currentId, setCurrentId }) {
         title: '', message: '', tags: '', selectedFile: '',
     })
     const selectedPost = useSelector(state =>
-        currentId ? state.posts.find(p => p._id === currentId) : null
+        currentId ? state.posts.posts.find(p => p._id === currentId) : null
     );
     const classes = useStyles();
     const dispatch = useDispatch();
@@ -25,10 +25,10 @@ export default function Form({ currentId, setCurrentId }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (currentId) {
-            await dispatch(updatePost(currentId, postData));
+            dispatch(updatePost(currentId, postData));
         }
         else {
-            await dispatch(createPost({ ...postData, creatorName: user?.result?.name }));
+            dispatch(createPost({ ...postData, creatorName: user?.result?.name }));
         }
         clear();
     };
@@ -50,7 +50,7 @@ export default function Form({ currentId, setCurrentId }) {
     }
 
     return (
-        <Paper className={classes.paper}>
+        <Paper className={classes.paper} elevation={6}>
             <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit} action="">
                 <Typography variant="h6">{!currentId ? 'Creating' : 'Editing'} a Memory</Typography>
                 <TextField fullWidth variant='outlined' name='title' label='Title' value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />

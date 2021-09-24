@@ -1,9 +1,10 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core';
 
 export default makeStyles((theme) => ({
     mainContainer: {
-        display: 'flex',
-        alignItems: 'center',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        
     },
     smMargin: {
         margin: theme.spacing(1),

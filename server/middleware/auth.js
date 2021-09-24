@@ -3,6 +3,7 @@ import { tokenSecret } from '../constants/constants.js';
 
 const auth = (req, res, next) => {
     try {
+        console.log('middleWare')
         const authHeader = req.headers.authorization;
         if (authHeader) {
             const token = authHeader.split(' ')[1];

@@ -3,18 +3,47 @@ import * as actionTypes from '../constants/actionTypes';
 
 //Action Creators
 
-export const getPosts = () => async (dispatch) => {
+export const getPosts = (page) => async (dispatch) => {
     try {
-        const { data } = await api.fetchPosts();
+        // console.log('get posts action')
+        dispatch({ type: actionTypes.START_LOADING, });
+        const { data } = await api.fetchPosts(page);
         dispatch(
             { type: actionTypes.FETCH_ALL, payload: data }
         );
+        dispatch({ type: actionTypes.END_LOADING, });
     } catch (error) {
-        console.log('post action:', error.message);
+        console.log('post action:', error);
     }
-
+    
+}
+export const getPostsBySearch = (searchQuery) => async (dispatch) => {
+    try {
+        dispatch({ type: actionTypes.START_LOADING, });
+        // console.log('search posts action')
+        const { data: { data } } = await api.fetchPostsBySearch(searchQuery);
+        dispatch({ type: actionTypes.SEARCH, payload: data });
+        dispatch({ type: actionTypes.END_LOADING, });
+        console.log('search result:', data)
+    } catch (error) {
+        console.log('post action:', error);
+    }
+    
 }
 
+export const getPost = (id) => async (dispatch) => {
+    try {
+        // console.log('get posts action')
+        dispatch({ type: actionTypes.START_LOADING, });
+        const { data } = await api.fetchPost(id);
+        dispatch(
+            { type: actionTypes.FETCH_POST, payload: data }
+        );
+        dispatch({ type: actionTypes.END_LOADING, });
+    } catch (error) {
+        console.log('post action:', error);
+    }
+}
 
 export const createPost = (post) => async (dispatch) => {
     try {

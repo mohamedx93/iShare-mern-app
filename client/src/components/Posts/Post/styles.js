@@ -53,4 +53,8 @@ export default makeStyles({
         textTransform: 'initial',
         fontSize: '0.75rem',  
     },
+    cardAction: {
+        display: "block",
+        textAlign: 'initial',
+    },
 });
