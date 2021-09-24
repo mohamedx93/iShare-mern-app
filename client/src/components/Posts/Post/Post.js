@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import useStyles from './styles';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography, ButtonBase } from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -6,23 +6,17 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment'
 import { useDispatch } from 'react-redux';
 import { deletePost, likePost } from '../../../actions/posts';
-import { useLocation, useHistory } from 'react-router-dom';
-import
-Likes from './Likes';
+import { useHistory } from 'react-router-dom';
+import Likes from './Likes';
 export default function Post({ post, setCurrentId }) {
     const dispatch = useDispatch();
     const classes = useStyles();
-    const location = useLocation();
     const history = useHistory();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile'))?.result)
 
     const openPost = () => {
         history.push(`/posts/${post._id}`)
     };
-
-    // useEffect(() => {
-    //     setUser(JSON.parse(localStorage.getItem('profile'))?.result || null)
-    // }, [location])
 
     
     return (
