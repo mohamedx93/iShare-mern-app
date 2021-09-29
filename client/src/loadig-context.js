@@ -9,4 +9,3 @@
 //         <LoadingProgress.Provider value={{ value }}>{props.child}</LoadingProgress.Provider>
 //     );
 // }
-
