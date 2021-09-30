@@ -12,6 +12,9 @@ app.use(express.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors())
 app.use('/posts', postRoutes)
 app.use('/user', userRoutes)
+app.get('/', (req, res) => {
+  res.send('App is running')
+})
 
 const CONNECTION_URL = `mongodb://${encodeURIComponent(process.env.DB_USER)}:${encodeURIComponent(process.env.DB_PWD)}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
 console.log(CONNECTION_URL)
