@@ -10,7 +10,7 @@ export default function Likes ({ likes, user, className }) {
     if (likes.find(like => (like === user?._id || like === user?.googleId))) {
       return (
         <>
-          <ThumbUpAltIcon fontSize='small' />
+          <ThumbUpAltIcon fontSize='small' style={{ fill: '#015d76' }} />
           <Typography className={className}>
             {likeText}&nbsp;
           </Typography>
@@ -19,7 +19,7 @@ export default function Likes ({ likes, user, className }) {
     } else {
       return (
         <>
-          <ThumbUpAltIconOutlined fontSize='small' />
+          <ThumbUpAltIconOutlined fontSize='small' style={{ fill: '#015d76' }} />
           <Typography className={className}>
             {totalLikes}&nbsp;{totalLikes !== 1 ? 'Likes' : 'Like'}&nbsp;
           </Typography>
@@ -29,7 +29,7 @@ export default function Likes ({ likes, user, className }) {
   } else {
     return (
       <>
-        <ThumbUpAltIconOutlined fontSize='small' />
+        <ThumbUpAltIconOutlined fontSize='small' style={{ fill: '#015d76' }} />
         <Typography className={className}>
                 &nbsp;Like&nbsp;
         </Typography>

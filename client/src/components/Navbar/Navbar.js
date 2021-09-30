@@ -5,6 +5,7 @@ import useStyles from './styles'
 import memoriesLogo from '../../images/memories-Logo.png'
 import memoriesText from '../../images/memories-Text.png'
 import iShareLogo from '../../images/logo.svg'
+import { FONTS } from '../../constants/themeConstants.js'
 import { useDispatch } from 'react-redux'
 import { LOGOUT } from '../../constants/actionTypes'
 import { useHistory, Link, useLocation } from 'react-router-dom/cjs/react-router-dom.min'
@@ -50,21 +51,23 @@ function Navbar () {
   return (
     <AppBar className={classes.appBar} position='static' color='inherit'>
       <Link to='/' className={classes.brandContainer}>
-        <img src={memoriesText} alt='icon' height='45px' />
+        <img src={iShareLogo} alt='icon' height='60px' />
         {/* <img src={memoriesText} alt='icon' height='45px' />
         <img className={classes.image} src={memoriesLogo} alt='icon' height='40px' /> */}
       </Link>
       <Toolbar className={classes.toolbar}>
         {user ? (
-          <div className={classes.profile}>
-            <Avatar
-              className={classes.purple}
-              alt={user.result.name}
-              src={user.result.imageUrl}
-            />
-            <Typography className={classes.userName} variant='h6'>
-              {user.result.name}
-            </Typography>
+          <div className={classes.navBarRight}>
+            <div className={classes.profile}>
+              <Avatar
+                className={classes.avatar}
+                alt={user.result.name}
+                src={user.result.imageUrl}
+              />
+              <Typography className={classes.userName} variant='h6'>
+                {user.result.name}
+              </Typography>
+            </div>
             <Button
               variant='contained'
               className={classes.logout}
@@ -79,8 +82,9 @@ function Navbar () {
             component={Link}
             to='/auth'
             variant='contained'
-            color='primary'
-            onClick={signIn}
+            color='secondary'
+
+            style={{ fontSize: '18px', fontWeight: '500', fontFamily: FONTS.RALEWAY }}
           >
             Sign In
           </Button>

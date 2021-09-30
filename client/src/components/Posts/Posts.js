@@ -30,7 +30,7 @@ export default function Posts ({ setCurrentId }) {
       >
         {
                     posts.map(post => (
-                      <Grid key={post._id} item sm={12} md={4} lg={3}>
+                      <Grid key={post._id} item xs={12} md={4} lg={3}>
                         <Post post={post} setCurrentId={setCurrentId} />
                       </Grid>
                     ))

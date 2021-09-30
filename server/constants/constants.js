@@ -1,1 +1,1 @@
-export const tokenSecret = 'test';
+export const tokenSecret = 'test'

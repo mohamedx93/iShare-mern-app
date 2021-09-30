@@ -57,8 +57,8 @@ export default function Form ({ currentId, setCurrentId }) {
           <FileBase type='file' multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} />
           <img width='48px' height='48px' src={postData.selectedFile} alt='thumbnail' />
         </div>
-        <Button className={classes.buttonSubmit} variant='contained' color='primary' size='large' type='submit' fullWidth>Submit</Button>
-        <Button variant='outlined' color='secondary' size='small' onClick={clear} fullWidth>Clear</Button>
+        <Button className={classes.buttonSubmit} variant='contained' color='primary' type='submit' fullWidth>Submit</Button>
+        <Button className={classes.buttonClear} variant='outlined' color='secondary' onClick={clear} fullWidth>Clear</Button>
         {/* <Button m={2} variant='outlined' color='inherit' size='small' onClick={() =>
                 {
                     console.log('button clicked ', i);

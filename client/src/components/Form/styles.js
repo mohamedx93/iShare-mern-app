@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles'
+import { ORANGE } from '../../constants/themeConstants.js'
 
 export default makeStyles((theme) => ({
   root: {
@@ -21,5 +22,8 @@ export default makeStyles((theme) => ({
   },
   buttonSubmit: {
     marginBottom: 10
+  },
+  buttonClear: {
+    color: ORANGE
   }
 }))

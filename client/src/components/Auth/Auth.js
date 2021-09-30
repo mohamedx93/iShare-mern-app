@@ -5,6 +5,7 @@ import { GoogleLogin } from 'react-google-login'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { signUp, signIn } from '../../actions/auth'
+import { PRIMARY } from '../../constants/themeConstants.js'
 import Input from './Input'
 import Icon from './icon'
 import useStyles from './styles'
@@ -127,7 +128,7 @@ export default function Auth () {
             cookiePolicy='single_host_origin'
           />
           <Grid container justifyContent='flex-end'>
-            <Button onClick={switchMode}>
+            <Button style={{ fontSize: '.8rem', fontWeight: '400', color: PRIMARY }} onClick={switchMode}>
               {isSignUp
                 ? 'Already have an account? Sign In'
                 : 'Don\'t have an account? Sign Up'}

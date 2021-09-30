@@ -1,8 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles'
 import { deepPurple } from '@material-ui/core/colors'
+import { FONTS, PRIMARY } from '../../constants/themeConstants.js'
 
 export default makeStyles((theme) => ({
   appBar: {
+    backgroundColor: PRIMARY,
     borderRadius: 15,
     margin: '30px 0',
     display: 'flex',
@@ -25,23 +27,28 @@ export default makeStyles((theme) => ({
     marginTop: '5px'
   },
   toolbar: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    width: '400px',
-    [theme.breakpoints.down('sm')]: {
-      width: 'auto'
-    }
+    // display: 'flex',
+    // justifyContent: 'space-between',
+    // width: '400px',
+    // [theme.breakpoints.down('sm')]: {
+    //   width: 'auto'
+    // }
   },
-  profile: {
+  navBarRight: {
     display: 'flex',
     justifyContent: 'space-between',
     width: '400px',
-    alignItems: 'center',
     [theme.breakpoints.down('sm')]: {
       width: 'auto',
       marginTop: 20,
       justifyContent: 'center'
-    }
+    },
+    alignItems: 'center'
+  },
+  profile: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
   },
   logout: {
     marginLeft: '20px'
@@ -49,14 +56,19 @@ export default makeStyles((theme) => ({
   userName: {
     display: 'flex',
     alignItems: 'center',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginLeft: '1.6rem',
+    fontFamily: FONTS.SOURCE,
+    fontSize: '1.6rem',
+    color: 'white'
   },
   brandContainer: {
     display: 'flex',
     alignItems: 'center'
   },
-  purple: {
-    color: theme.palette.getContrastText(deepPurple[500]),
-    backgroundColor: deepPurple[500]
+  avatar: {
+    backgroundColor: '#1D2A34',
+    color: theme.palette.getContrastText('#1D2A34')
+
   }
 }))
