@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { AppBar, Toolbar, Typography, Button, Avatar } from '@material-ui/core'
 // import { Link } from 'react-router-dom';
 import useStyles from './styles'
@@ -16,16 +16,14 @@ function Navbar() {
   const history = useHistory()
   const location = useLocation()
 
-  const stableDispatch = useMemo(dispatch, [dispatch])
-  const stableHistory = useMemo(history, [history])
+  const stableDispatch = useCallback(dispatch, [dispatch])
+  const stableHistory = useCallback(history, [history])
   const logout = useCallback(
     () => {
       stableDispatch({ type: LOGOUT })
       stableHistory.push('/')
       setUser(null)
     }, [stableDispatch, stableHistory]);
-
-
 
 
   useEffect(() => {
