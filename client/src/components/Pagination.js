@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { Pagination, PaginationItem } from '@material-ui/lab'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,7 +9,7 @@ export default function Paginate ({ page }) {
   const { numberOfPages } = useSelector((state) => state.posts)
   const classes = useStyles()
   const dispatch = useDispatch()
-  const stableDispatch = useCallback(dispatch, [])
+  const stableDispatch = useMemo(dispatch, [dispatch])
 
   useEffect(() => {
     if (page) stableDispatch(getPosts(page))

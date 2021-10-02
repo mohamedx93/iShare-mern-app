@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useMemo, useEffect, useState } from 'react'
 import { AppBar, Toolbar, Typography, Button, Avatar } from '@material-ui/core'
 // import { Link } from 'react-router-dom';
 import useStyles from './styles'
@@ -9,23 +9,24 @@ import { LOGOUT } from '../../constants/actionTypes'
 import { useHistory, Link, useLocation } from 'react-router-dom/cjs/react-router-dom.min'
 import decode from 'jwt-decode'
 
-function Navbar () {
+function Navbar() {
   const [user, setUser] = useState(null)
   const classes = useStyles()
   const dispatch = useDispatch()
   const history = useHistory()
   const location = useLocation()
 
-  
+  const stableDispatch = useMemo(dispatch, [dispatch])
+  const stableHistory = useMemo(history, [history])
   const logout = useCallback(
     () => {
-      dispatch({ type: LOGOUT })
-      history.push('/')
+      stableDispatch({ type: LOGOUT })
+      stableHistory.push('/')
       setUser(null)
-    },[]);
-    
+    }, [stableDispatch, stableHistory]);
 
- 
+
+
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem('profile')))
@@ -44,7 +45,7 @@ function Navbar () {
       return isExpired
     }
     if (isExpiredToken()) logout()
-  }, [])
+  }, [logout, user])
 
   return (
     <AppBar className={classes.appBar} position='static' color='inherit'>
