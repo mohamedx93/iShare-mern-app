@@ -11,7 +11,7 @@ export default function Paginate ({ page }) {
   const dispatch = useDispatch()
   useEffect(() => {
     if (page) dispatch(getPosts(page))
-  }, [page])
+  }, [page, dispatch])
   return (
     <Pagination
       classes={{ ul: classes.ul }}

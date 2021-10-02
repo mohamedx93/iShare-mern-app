@@ -18,11 +18,11 @@ function PostDetails () {
 
   useEffect(() => {
     dispatch(getPost(id))
-  }, [id])
+  }, [id, dispatch])
 
   useEffect(() => {
     if (post) dispatch(getPostsBySearch({ search: 'none', searchTags: post?.tags.join(',') }))
-  }, [post])
+  }, [post, dispatch])
 
   if (!post) return null
   if (isLoading) {

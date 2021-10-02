@@ -40,9 +40,8 @@ function Navbar () {
   }, [location])
 
   useEffect(() => {
-    // console.log('expired ', isExpiredToken())
     if (isExpiredToken()) logout()
-  }, [])
+  }, [isExpiredToken])
 
   return (
     <AppBar className={classes.appBar} position='static' color='inherit'>
