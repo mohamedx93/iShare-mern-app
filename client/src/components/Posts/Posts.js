@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Post from './Post/Post'
 import { useSelector } from 'react-redux'
 import { Grid, CircularProgress, Typography } from '@material-ui/core'
-// import CircularProgressWithLabel from './CircularProgressWithLabel'
 import useStyles from './styles'
 
 export default function Posts ({ setCurrentId }) {
   const classes = useStyles()
   const { posts, isLoading } = useSelector((state) => state.posts)
-  // const loadingValue = useSelector((state) => state.loadingValue);
-  // const [loading, setLoading] = useState(true)
-  // const [loadingValue, setLoadingValue] = useState(0)
 
-  // useEffect(() => { setLoading(!posts||posts?.length<1) }, [posts, posts?.length])
 
   console.log('posts Component', isLoading)
   if (!isLoading && !posts?.length) {
@@ -22,7 +17,7 @@ export default function Posts ({ setCurrentId }) {
   }
 
   return (
-  // loading ? <CircularProgressWithLabel value={loadingValue} /> : (
+  
     isLoading ? <CircularProgress /> : (
       <Grid
         className={classes.mainContainer} container alignItems='stretch'

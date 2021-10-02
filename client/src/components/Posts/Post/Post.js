@@ -12,7 +12,7 @@ export default function Post ({ post, setCurrentId }) {
   const dispatch = useDispatch()
   const classes = useStyles()
   const history = useHistory()
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile'))?.result)
+  const [user] = useState(JSON.parse(localStorage.getItem('profile'))?.result)
 
   const openPost = () => {
     history.push(`/posts/${post._id}`)
