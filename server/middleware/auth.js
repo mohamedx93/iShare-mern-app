@@ -7,6 +7,7 @@ const auth = (req, res, next) => {
   try {
     const authHeader = req.headers.authorization
     if (authHeader) {
+      console.log('auth')
       const token = authHeader.split(' ')[1]
       const isCustomAuth = token.length < 500
       let decodedData
