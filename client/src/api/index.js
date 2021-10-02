@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'https://mern-ishare-app.herokuapp.com/' });
+const API = axios.create({ baseURL: "https://mern-ishare-app.herokuapp.com/" });
 
 
 API.interceptors.request.use((req) => {

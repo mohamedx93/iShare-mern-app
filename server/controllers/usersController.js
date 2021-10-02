@@ -1,7 +1,9 @@
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import { tokenSecret } from '../constants/constants.js'
 import User from '../models/userModel.js'
+import dotenv from 'dotenv'
+dotenv.config({ path: `${process.env.PWD}/.env` })
+
 
 export const signIn = async (req, res) => {
   const { email, password } = req.body
@@ -10,7 +12,7 @@ export const signIn = async (req, res) => {
     if (!existingUser) res.status(404).json({ message: 'User doesn\'t exist' })
     const isPasswordCorrect = await bcrypt.compare(password, existingUser.password)
     if (!isPasswordCorrect) return res.status(400).json({ message: 'Invalide Credentials' })
-    const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, tokenSecret, { expiresIn: '1d' })
+    const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, process.env.TOKEN_SECRET, { expiresIn: '1d' })
     res.status(200).json({ result: existingUser, token })
   } catch (error) {
     res.status(500).json({ error })
@@ -29,7 +31,7 @@ export const signUp = async (req, res) => {
       email,
       password: hashedPassword
     })
-    console.log('mongo create user', result)
+    
     const token = jwt.sign({ email: result.email, id: result._id }, tokenSecret, { expiresIn: '1h' })
     return res.status(200).json({ result, token })
   } catch (error) {

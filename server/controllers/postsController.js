@@ -12,7 +12,7 @@ export const getPost = async (req, res) => {
 }
 
 export const getPosts = async (req, res) => {
-  console.log('get request received')
+  
   const { page } = req.query
   try {
     const LIMIT = 8
@@ -47,7 +47,7 @@ export const getPostsBySearch = async (req, res) => {
 }
 
 export const createPost = async (req, res) => {
-  // console.log('create request')
+  
   const post = req.body
   post.tags = post.tags.map(tag => tag.trim())
   const newPost = new PostMessage({
@@ -65,7 +65,7 @@ export const createPost = async (req, res) => {
 }
 
 export const updatePost = async (req, res) => {
-  // console.log('update request received');
+  
   const { id } = req.params
   const post = req.body
   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No post with that id')

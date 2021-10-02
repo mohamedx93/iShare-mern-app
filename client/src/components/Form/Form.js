@@ -59,11 +59,7 @@ export default function Form ({ currentId, setCurrentId }) {
         </div>
         <Button className={classes.buttonSubmit} variant='contained' color='primary' type='submit' fullWidth>Submit</Button>
         <Button className={classes.buttonClear} variant='outlined' color='secondary' onClick={clear} fullWidth>Clear</Button>
-        {/* <Button m={2} variant='outlined' color='inherit' size='small' onClick={() =>
-                {
-                    console.log('button clicked ', i);
-                    setI(i + 1);
-                }} fullWidth>Log</Button> */}
+        
       </form>
     </Paper>
   )

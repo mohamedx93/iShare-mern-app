@@ -19,11 +19,12 @@ export const getPosts = (page) => async (dispatch) => {
 export const getPostsBySearch = (searchQuery) => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.START_LOADING })
-    // console.log('search posts action')
+    
+    
     const { data: { data } } = await api.fetchPostsBySearch(searchQuery)
     dispatch({ type: actionTypes.SEARCH, payload: data })
     dispatch({ type: actionTypes.END_LOADING })
-    console.log('search result:', data)
+    
   } catch (error) {
     console.log('post action:', error)
   }
@@ -31,7 +32,8 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
 
 export const getPost = (id) => async (dispatch) => {
   try {
-    // console.log('get posts action')
+    
+  
     dispatch({ type: actionTypes.START_LOADING })
     const { data } = await api.fetchPost(id)
     dispatch(

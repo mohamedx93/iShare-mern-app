@@ -16,14 +16,15 @@ function Navbar() {
   const history = useHistory()
   const location = useLocation()
 
-  const stableDispatch = useCallback(dispatch, [dispatch])
-  const stableHistory = useCallback(history, [history])
-  const logout = useCallback(
-    () => {
-      stableDispatch({ type: LOGOUT })
-      stableHistory.push('/')
-      setUser(null)
-    }, [stableDispatch, stableHistory]);
+  // const stableDispatch = useCallback(dispatch, [dispatch])
+  // const stableHistory = useCallback(history, [history])
+  const logout = useCallback(() => {
+    
+    dispatch({ type: LOGOUT })
+    history.push('/')
+    setUser(null)
+    // eslint-disable-next-line
+    },[])
 
 
   useEffect(() => {
@@ -36,10 +37,10 @@ function Navbar() {
       let decodedData
       const token = user?.token
       if (!token) return false
+      const dateNow = new Date().getTime()
       decodedData = decode(token)
-      const dateNow = new Date()
-
-      if (decodedData.exp < dateNow.getTime()) isExpired = true
+      
+      if (decodedData.exp*1000 < dateNow) isExpired = true
       return isExpired
     }
     if (isExpiredToken()) logout()

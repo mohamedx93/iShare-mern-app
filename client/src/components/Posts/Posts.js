@@ -8,8 +8,6 @@ export default function Posts ({ setCurrentId }) {
   const classes = useStyles()
   const { posts, isLoading } = useSelector((state) => state.posts)
 
-
-  console.log('posts Component', isLoading)
   if (!isLoading && !posts?.length) {
     return (
       <Typography variant='h3' color='textSecondary'>No posts</Typography>

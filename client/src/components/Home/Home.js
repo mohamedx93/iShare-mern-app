@@ -24,7 +24,6 @@ function Home () {
   const [tags, setTags] = useState([])
 
   const [currentId, setCurrentId] = useState(null)
-  console.log('home component')
 
   const searchPost = () => {
     if (search.trim() || tags.length > 0) {
