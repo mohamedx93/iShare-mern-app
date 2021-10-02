@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { AppBar, Toolbar, Typography, Button, Avatar } from '@material-ui/core'
 // import { Link } from 'react-router-dom';
 import useStyles from './styles'
-import memoriesLogo from '../../images/memories-Logo.png'
-import memoriesText from '../../images/memories-Text.png'
 import iShareLogo from '../../images/logo.svg'
 import { FONTS } from '../../constants/themeConstants.js'
 import { useDispatch } from 'react-redux'
@@ -35,9 +33,7 @@ function Navbar () {
     setUser(null)
   }
 
-  const signIn = () => {
-
-  }
+ 
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem('profile')))
@@ -52,8 +48,6 @@ function Navbar () {
     <AppBar className={classes.appBar} position='static' color='inherit'>
       <Link to='/' className={classes.brandContainer}>
         <img src={iShareLogo} alt='icon' height='60px' />
-        {/* <img src={memoriesText} alt='icon' height='45px' />
-        <img className={classes.image} src={memoriesLogo} alt='icon' height='40px' /> */}
       </Link>
       <Toolbar className={classes.toolbar}>
         {user ? (

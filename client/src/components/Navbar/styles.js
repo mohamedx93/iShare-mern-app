@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles'
-import { deepPurple } from '@material-ui/core/colors'
 import { FONTS, PRIMARY } from '../../constants/themeConstants.js'
 
 export default makeStyles((theme) => ({
