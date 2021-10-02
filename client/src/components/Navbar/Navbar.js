@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { AppBar, Toolbar, Typography, Button, Avatar } from '@material-ui/core'
 // import { Link } from 'react-router-dom';
 import useStyles from './styles'
@@ -16,22 +16,14 @@ function Navbar () {
   const history = useHistory()
   const location = useLocation()
 
-  const isExpiredToken = () => {
-    let isExpired = false
-    let decodedData
-    const token = user?.token
-    if (!token) return false
-    decodedData = decode(token)
-    const dateNow = new Date()
-
-    if (decodedData.exp < dateNow.getTime()) isExpired = true
-    return isExpired
-  }
-  const logout = () => {
-    dispatch({ type: LOGOUT })
-    history.push('/')
-    setUser(null)
-  }
+  
+  const logout = useCallback(
+    () => {
+      dispatch({ type: LOGOUT })
+      history.push('/')
+      setUser(null)
+    },[]);
+    
 
  
 
@@ -40,8 +32,19 @@ function Navbar () {
   }, [location])
 
   useEffect(() => {
+    const isExpiredToken = () => {
+      let isExpired = false
+      let decodedData
+      const token = user?.token
+      if (!token) return false
+      decodedData = decode(token)
+      const dateNow = new Date()
+
+      if (decodedData.exp < dateNow.getTime()) isExpired = true
+      return isExpired
+    }
     if (isExpiredToken()) logout()
-  }, [isExpiredToken])
+  }, [])
 
   return (
     <AppBar className={classes.appBar} position='static' color='inherit'>

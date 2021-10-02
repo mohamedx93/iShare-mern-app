@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import { Paper, Typography, CircularProgress, Divider } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
@@ -9,20 +9,20 @@ import brokenImage from '../../images/no_img.png'
 
 function PostDetails () {
   const { post, posts, isLoading } = useSelector((state) => state.posts)
-  const dispatch = useDispatch()
   const history = useHistory()
   const classes = useStyles()
   const { id } = useParams()
-
+  const dispatch = useDispatch()
+  const stableDispatch = useCallback(dispatch, [])
   const openPost = (id) => history.push(`/posts/${id}`)
-
+  
   useEffect(() => {
-    dispatch(getPost(id))
-  }, [id, dispatch])
-
+    stableDispatch(getPost(id))
+  }, [id, stableDispatch])
+  
   useEffect(() => {
-    if (post) dispatch(getPostsBySearch({ search: 'none', searchTags: post?.tags.join(',') }))
-  }, [post, dispatch])
+    if (post) stableDispatch(getPostsBySearch({ search: 'none', searchTags: post?.tags.join(',') }))
+  }, [post, stableDispatch])
 
   if (!post) return null
   if (isLoading) {
