@@ -32,7 +32,7 @@ export const signUp = async (req, res) => {
       password: hashedPassword
     })
     
-    const token = jwt.sign({ email: result.email, id: result._id }, tokenSecret, { expiresIn: '1h' })
+    const token = jwt.sign({ email: result.email, id: result._id }, process.env.TOKEN_SECRET, { expiresIn: '1h' })
     return res.status(200).json({ result, token })
   } catch (error) {
     res.status(500).json({ error })
