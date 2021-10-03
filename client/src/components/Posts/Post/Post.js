@@ -33,7 +33,10 @@ export default function Post ({ post, setCurrentId }) {
         </div>
         {(user?._id === post.creatorId || user?.googleId === post.creatorId) &&
           <div className={classes.overlay2}>
-            <Button style={{ color: 'white' }} size='small' onClick={() => { setCurrentId(post._id) }}>
+          <Button style={{ color: 'white' }} size='small' onClick={(e) => {
+            e.stopPropagation();
+            setCurrentId(post._id)
+          }}>
               <MoreHorizIcon fontSize='medium' />
             </Button>
           </div>}
