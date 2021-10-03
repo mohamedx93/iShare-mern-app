@@ -63,7 +63,7 @@ function PostDetails () {
               <div style={{ margin: '20px', cursor: 'pointer' }} onClick={() => openPost(_id)} key={_id}>
                 <Typography gutterButton variant='h6'>{title}</Typography>
                 <Typography gutterButton variant='subtitle2'>{creatorName}</Typography>
-                <Typography gutterButton variant='subtitle2'>{message}</Typography>
+                <Typography gutterButton variant='subtitle2'>{message.substring(0,150)}</Typography>
                 <Typography gutterButton variant='subtitle1'>Likes: {likes.length}</Typography>
                 <img
                   src={selectedFile} alt={brokenImage}
