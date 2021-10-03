@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config({ path: `${process.env.PWD}/.env` })
 
 const auth = (req, res, next) => {
+  console.log('auth')
   try {
     const authHeader = req.headers.authorization
     if (authHeader) {
