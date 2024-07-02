@@ -1,6 +1,13 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
 
-const API = axios.create({ baseURL: "https://ishare-mern-app.onrender.com/" });
+dotenv.config();
+
+
+API_URL = process.env.API_URL;
+const API = axios.create({ baseURL: "API_URL" });
+
+
 
 
 API.interceptors.request.use((req) => {
