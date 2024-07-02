@@ -55,10 +55,10 @@ export default function Form ({ currentId, setCurrentId }) {
         <TextField fullWidth variant='outlined' name='tags' label='Tags' value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })} />
         <div className={classes.fileInput}>
           <FileBase type='file' multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} />
-          <img width='48px' height='48px' src={postData.selectedFile} alt='thumbnail' />
+          {postData.selectedFile && (<img width='48px' height='48px' src={postData.selectedFile} alt='thumbnail' />)}
         </div>
         <Button className={classes.buttonSubmit} variant='contained' color='primary' type='submit' fullWidth>Submit</Button>
-        <Button className={classes.buttonClear} variant='outlined' color='secondary' onClick={clear} fullWidth>Clear</Button>
+        <Button className={classes.buttonClear} variant='contained' color='secondary' onClick={clear} fullWidth>Clear</Button>
         
       </form>
     </Paper>
