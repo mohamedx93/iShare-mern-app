@@ -58,7 +58,7 @@ export default function Form ({ currentId, setCurrentId }) {
           {postData.selectedFile && (<img width='48px' height='48px' src={postData.selectedFile} alt='thumbnail' />)}
         </div>
         <Button className={classes.buttonSubmit} variant='contained' color='primary' type='submit' fullWidth>Submit</Button>
-        <Button className={classes.buttonClear} variant='contained' color='secondary' onClick={clear} fullWidth>Clear</Button>
+        <Button className={classes.buttonClear} variant='outlined' color='secondary' onClick={clear} fullWidth>Clear</Button>
         
       </form>
     </Paper>
