@@ -5,7 +5,7 @@ dotenv.config();
 
 
 API_URL = process.env.API_URL;
-const API = axios.create({ baseURL: API_URL });
+const API = axios.create({ baseURL: API_URL ||  "https://ishare-mern-app.onrender.com" });
 
 
 
